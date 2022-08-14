@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import products from '../data';
 
-const Products = () => {
+const SavedImages = () => {
 	return (
 		<section className="section">
 			<h2>Products</h2>
-			<div className="products">
+			<div className="images">
 				{products.map((product) => {
 					console.log(product);
 					return (
@@ -19,4 +19,4 @@ const Products = () => {
 		</section>
 	);
 };
-export default Products;
+export default SavedImages;

@@ -12,7 +12,7 @@ const SavedFF = () => {
 			<img src={image} alt={name}></img>
 			<h3>{name}</h3>
 			<h5>{ffId}</h5>
-			<Link to="/user">back to list of flow fields</Link>
+			<Link to="/myArt">back to list of flow fields</Link>
 		</div>
 	);
 };

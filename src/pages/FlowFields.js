@@ -1,11 +1,10 @@
-import SketchFF from './sketches/SketchFF';
+import IvanaFF from '../components/sketches/IvanaFF';
 
 const FlowFields = () => {
 	return (
 		<section className="section">
-			<header className="sketchFF">
-				<SketchFF />
-			</header>
+			<header className="sketchFF"></header>
+			<IvanaFF />
 		</section>
 	);
 };

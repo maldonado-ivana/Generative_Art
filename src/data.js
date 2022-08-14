@@ -1,37 +1,22 @@
-const products = [
+const artTypes = [
 	{
-		id: 'recZkNf2kwmdBcqd0',
-		name: 'accent chair',
+		id: 1,
+		name: 'Flow Fields',
 		image:
-			'https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160',
+			'https://cdnb.artstation.com/p/assets/images/images/033/858/105/large/snortthesnake-hsla-perlin-flow-field-2.jpg?1610738437',
 	},
 	{
-		id: 'recEHmzvupvT8ZONH',
-		name: 'albany sectional',
-
+		id: 2,
+		name: 'Sierpinski Triangles',
 		image:
-			'https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52',
+			'https://sjmeunier.github.io/assets/images/blog/fractals/sierpinskitriangles.jpg',
 	},
 	{
-		id: 'rec5NBwZ5zCD9nfF0',
-		name: 'albany table',
-
+		id: 3,
+		name: 'Fractal Trees',
 		image:
-			'https://dl.airtable.com/.attachmentThumbnails/7478483f40a2f56662a87b304bd4e104/707d397f',
-	},
-	{
-		id: 'recd1jIVIEChmiwhe',
-		name: 'armchair',
-
-		image:
-			'https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f',
-	},
-	{
-		id: 'recoM2MyHJGHLVi5l',
-		name: 'bar stool',
-		image:
-			'https://dl.airtable.com/.attachmentThumbnails/a6119fabf7256049cc0e8dbcdf536c9c/b0153f66',
+			'https://www.tomchaplin.xyz/assets/portfolio/2019-03-24-Windy-Random-Fractal-Trees/fractal_tree_no_random.png',
 	},
 ];
 
-export default products;
+export default artTypes;

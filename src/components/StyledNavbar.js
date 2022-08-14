@@ -22,16 +22,28 @@ const Navbar = () => {
 				Flow Fields
 			</NavLink>
 			<NavLink
-				to="/products"
+				to="/signup"
 				className={({ isActive }) => (isActive ? 'link active' : 'link')}
 			>
-				User Saved Art
+				Signup
 			</NavLink>
 			<NavLink
 				to="/login"
 				className={({ isActive }) => (isActive ? 'link active' : 'link')}
 			>
 				Login
+			</NavLink>
+			<NavLink
+				to="/dashboard"
+				className={({ isActive }) => (isActive ? 'link active' : 'link')}
+			>
+				My Art
+			</NavLink>
+			<NavLink
+				to="/account"
+				className={({ isActive }) => (isActive ? 'link active' : 'link')}
+			>
+				My Acount
 			</NavLink>
 		</nav>
 	);

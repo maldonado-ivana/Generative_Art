@@ -1,50 +1,59 @@
 // Reac Router Imports:
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { useState } from 'react';
 
-import Home from './components/Home';
-import About from './components/About';
-import FlowFields from './components/FlowFields';
+import Home from './pages/Home';
+import About from './pages/About';
+import FlowFields from './pages/FlowFields';
 import SharedLayout from './components/SharedLayout';
 import SavedFF from './components/SavedFF';
-import Products from './components/SavedArt';
+import Dashboard from './pages/Dashboard';
 import Error from './components/Error';
-import Dashboard from './Dashboard';
-import Login from './Login';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Account from './pages/Account';
 import ProtectedRoute from './components/ProtectedRoute';
 import SharedArtLayout from './components/SharedArtLayout';
 import './App.css';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
 	const [user, setUser] = useState(null);
 
 	return (
-		<BrowserRouter>
+		<AuthContextProvider>
 			<Routes>
 				<Route path="/" element={<SharedLayout />}>
 					<Route index element={<Home />} />
+
 					<Route path="about" element={<About />} />
 					<Route path="flowfields" element={<FlowFields />} />
-					<Route path="products" element={<SharedArtLayout />}>
-						<Route index element={<Products />} />
+					<Route path="dashboard" element={<SharedArtLayout />}>
+						<Route
+							index
+							element={
+								<ProtectedRoute>
+									<Dashboard />
+								</ProtectedRoute>
+							}
+						/>
 						<Route path=":ffId" element={<SavedFF />} />
 					</Route>
-
-					<Route path="login" element={<Login setUser={setUser}></Login>} />
+					<Route path="signup" element={<Signup />} />
+					<Route path="login" element={<Login />} />
 					<Route
-						path="dashboard"
+						path="account"
 						element={
-							<ProtectedRoute user={user}>
-								<Dashboard user={user} />
+							<ProtectedRoute>
+								<Account />
 							</ProtectedRoute>
 						}
 					/>
 					<Route path="*" element={<Error />} />
 				</Route>
 			</Routes>
-			{/* <footer>Footer</footer> */}
-		</BrowserRouter>
+		</AuthContextProvider>
 	);
 }
 

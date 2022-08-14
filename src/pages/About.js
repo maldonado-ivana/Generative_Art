@@ -1,10 +1,7 @@
-import { Link } from 'react-router-dom';
-import IvanaFF from './sketches/IvanaFF';
-
 const About = () => {
 	return (
 		<section className="section">
-			<IvanaFF />
+			<h2>About Page</h2>
 		</section>
 	);
 };
