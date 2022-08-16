@@ -17,11 +17,12 @@ const Account = () => {
 	};
 
 	return (
-		<div>
-			<h1>Account</h1>
-			<h3>User Email: {user && user.email}</h3>
-			<button onClick={handleLogout}>Logout</button>
-		</div>
+		<section className=" text-white">
+			<div className="h-full absolute top-[20%] p-4 md:p-8">
+				<h1 className="text-3xl md:text-5xl font-bold">My Account</h1>
+				<h3 className="text- md:sm py-5">User: {user && user.email}</h3>
+			</div>
+		</section>
 	);
 };
 

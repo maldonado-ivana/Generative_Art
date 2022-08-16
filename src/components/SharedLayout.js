@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router-dom';
-
-import StyledNavbar from './StyledNavbar';
+import Navbar from './StyledNavbar';
 
 const Home = () => {
 	return (
 		<>
-			<StyledNavbar />
+			<Navbar />
 			<Outlet />
 		</>
 	);
