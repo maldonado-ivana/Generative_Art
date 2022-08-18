@@ -32,12 +32,11 @@ const Signup = () => {
 		<section className="w-full h-screen">
 			<img
 				className="hidden sm:block absolute w-full h-full object-cover"
-				src="https://firebasestorage.googleapis.com/v0/b/generative-art-app.appspot.com/o/images%2Fff1660319705545?alt=media&token=59a4e8bc-d5a0-43fb-a640-6a4e4613c1d2"
-				alt="/"
+				src="https://firebasestorage.googleapis.com/v0/b/generative-art-app.appspot.com/o/images%2Fff1660320960523?alt=media&token=c1ee0257-e931-4897-b5b1-49619da6256c"
+				alt="green background"
 			/>
-			<div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
 			<div className="fixed w-full px-4 py-24 z-50">
-				<div className="max-w-[450px] h-[450px] mx-auto bg-black/75 text-white ">
+				<div className="max-w-[450px] h-[450px] mx-auto bg-black/90 text-white ">
 					<div className="max-w-[320px] mx-auto py-16">
 						<h1 className="text-3xl font-bold text-center">Signup</h1>
 

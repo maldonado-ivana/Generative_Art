@@ -59,8 +59,16 @@ const TrianglesSketch = () => {
 	let b1 = Math.random() * 255;
 	let b2 = Math.random() * 255;
 
+	let numPointsSpan;
+
 	let numPointsInput;
-	let numPoints = 10000;
+
+	let numPoints = 5000;
+	let pointSize = 150;
+	let pointSizeSpan;
+	let pointSizeSlider;
+	let curPointSize;
+
 	let tri1 = [450, 100];
 	let tri2 = [100, 800];
 	let tri3 = [800, 800];
@@ -106,11 +114,16 @@ const TrianglesSketch = () => {
 		for (let i = 0; i < points.length; i++) {
 			const r = p5.map(points[i][0], 0, canvasWidth, r1, r2); // replace static values with random color values -- every flow will have different colors
 			const g = p5.map(points[i][1], 0, canvasHeight, g2, g1);
-			const b = p5.map(points[i][0], 0, canvasWidth, b1, b2);
+			const b = p5.map(points[i][0], 0, canvasWidth, b2, b1);
 
 			p5.fill(r, g, b);
-			p5.ellipse(points[i][0], points[i][1], 1);
+			p5.ellipse(points[i][0], points[i][1], pointSize);
 		}
+	}
+
+	function updatePointSize() {
+		pointSize = pointSizeSlider.value();
+		curPointSize.html(pointSize);
 	}
 
 	function downloadImage(p5) {
@@ -134,8 +147,17 @@ const TrianglesSketch = () => {
 		buttonsDiv = p5.createDiv();
 		buttonsDiv.addClass('buttons');
 
+		numPointsSpan = p5.createSpan('Number of Points');
+		numPointsSpan.addClass('label');
 		numPointsInput = p5.createInput(numPoints);
 		numPointsInput.addClass('input-box');
+
+		pointSizeSpan = p5.createSpan('Point Size');
+		pointSizeSpan.addClass('label');
+		pointSizeSlider = p5.createSlider(1, 150, 108, 1);
+		pointSizeSlider.input(updatePointSize);
+		curPointSize = p5.createSpan(pointSize);
+		curPointSize.addClass('label-update');
 
 		updateBtn = p5.createButton('Update');
 		updateBtn.addClass('button');
@@ -155,11 +177,16 @@ const TrianglesSketch = () => {
 			p5.saveCanvas('flowfield', 'png');
 		});
 
+		pointSizeSpan.parent(inputDiv);
+		pointSizeSlider.parent(inputDiv);
+
+		curPointSize.parent(inputDiv);
+
 		updateBtn.parent(buttonsDiv);
 		clearBtn.parent(buttonsDiv);
 		saveBtn.parent(buttonsDiv);
 		downloadBtn.parent(buttonsDiv);
-
+		numPointsSpan.parent(inputDiv);
 		numPointsInput.parent(inputDiv);
 		buttonsDiv.parent(inputDiv);
 
@@ -178,21 +205,18 @@ const TrianglesSketch = () => {
 	};
 
 	const draw = (p5) => {
-		p5.background(0);
+		p5.background(10);
 		p5.noStroke();
 		p5.fill(255);
 
-		p5.circle(tri1[0], tri1[1], 1);
-		p5.circle(tri2[0], tri2[1], 1);
-		p5.circle(tri3[0], tri3[1], 1);
-		p5.circle(current[0], current[1], 1);
+		p5.ellipse(tri1[0], tri1[1], 1);
+		p5.ellipse(tri2[0], tri2[1], 1);
+		p5.ellipse(tri3[0], tri3[1], 1);
+		p5.ellipse(current[0], current[1], pointSize);
 
 		drawParticles(p5, pointsToDraw);
 
 		if (clear) {
-			numPoints = [];
-			generateFractalPoints();
-			startingPoints = [];
 			pointsToDraw = [];
 			p5.clear();
 
@@ -203,6 +227,8 @@ const TrianglesSketch = () => {
 			g2 = Math.random() * 255;
 			b1 = Math.random() * 255;
 			b2 = Math.random() * 255;
+
+			clear = false;
 		}
 	};
 

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import SharedLayout from './components/SharedLayout';
 import FlowFields from './pages/FlowFields';
 import SierpinskiTriangles from './pages/SierpinskiTriangles';
+import FractalTreesSketch from './components/sketches/FractalTreesSketch';
 import Dashboard from './pages/Dashboard';
 import Error from './components/Error';
 import Login from './components/Login';
@@ -27,6 +28,7 @@ function App() {
 					<Route index element={<Home />} />
 					<Route path="flowfields" element={<FlowFields />} />
 					<Route path="triangles" element={<SierpinskiTriangles />} />
+					<Route path="trees" element={<FractalTreesSketch />} />
 					<Route path="dashboard" element={<SharedArtLayout />}>
 						<Route
 							index

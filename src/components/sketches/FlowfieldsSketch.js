@@ -7,6 +7,7 @@ import {
 } from 'firebase/storage';
 import { db } from '../../firebase-config';
 import { addDoc, collection } from 'firebase/firestore';
+
 import './Styling.css';
 
 const IvanaFF = () => {
@@ -36,6 +37,7 @@ const IvanaFF = () => {
 		uploadString(storageRef, savedImageBase64, 'data_url').then((snapshot) => {
 			getDownloadURL(storageRef).then((url) => {
 				console.log('Uploaded a data_url string!', storageRef);
+				alert('Image Saved!');
 
 				const docRef = addDoc(collection(db, 'images'), {
 					imageUrl: url,
@@ -46,8 +48,8 @@ const IvanaFF = () => {
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////
 	// ****** VARIABLES **********************************
-	let canvasWidth = 950;
-	let canvasHeight = 900;
+	let canvasWidth = 800;
+	let canvasHeight = 600;
 	let canvas;
 	let containerDiv;
 	let inputDiv;
@@ -56,7 +58,7 @@ const IvanaFF = () => {
 
 	let buffer;
 	let points = [];
-	let density = 55; //changes the number of particles on grid
+	let density = 30; //changes the number of particles on grid
 
 	let angle; //decimal number
 	let angleSpeed = 0.01; // This changes how the flow field looks (lower number, very flowy, higher number, root like)
@@ -113,8 +115,8 @@ const IvanaFF = () => {
 
 	function drawParticles(p5, points) {
 		for (let i = 0; i < points.length; i++) {
-			const r = p5.map(points[i].x, 0, p5.width, r1, r2); // replace static values with random color values -- every flow will have different colors
-			const g = p5.map(points[i].y, 0, p5.height, g2, g1);
+			const r = p5.map(points[i].x, 0, p5.width, r2, r1); // replace static values with random color values -- every flow will have different colors
+			const g = p5.map(points[i].y, 0, p5.height, g1, g2);
 			const b = p5.map(points[i].x, 0, p5.width, b1, b2);
 			p5.fill(r, g, b);
 
@@ -228,7 +230,7 @@ const IvanaFF = () => {
 		currentSpeed = p5.createSpan(angleSpeed);
 		currentSpeed.addClass('label-update');
 
-		let mapSpan = p5.createSpan('Y-Offset');
+		let mapSpan = p5.createSpan('Direction');
 		mapSpan.addClass('label');
 		upperMapSlider = p5.createSlider(0, 5000, 500, 1);
 		upperMapSlider.input(updateUpperMap); //calls the method above when the slider value changes
@@ -270,12 +272,12 @@ const IvanaFF = () => {
 		checkboxesDiv.parent(inputDiv);
 		noiseDetailCheckBox.parent(checkboxesDiv);
 		circleCheckbox.parent(checkboxesDiv);
-		buttonsDiv.parent(inputDiv);
 		drawBtn.parent(buttonsDiv);
 		clearBtn.parent(buttonsDiv);
 		saveBtn.parent(buttonsDiv);
 		downloadBtn.parent(buttonsDiv);
 
+		buttonsDiv.parent(inputDiv);
 		canvas.parent(containerDiv);
 		inputDiv.parent(containerDiv);
 	}
@@ -287,7 +289,7 @@ const IvanaFF = () => {
 	const setup = (p5, canvasParentRef) => {
 		canvas = p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
 		buffer = p5.createGraphics(canvasWidth, canvasHeight);
-		p5.background(0);
+		p5.background(15);
 
 		createInputFields(p5);
 
@@ -299,7 +301,6 @@ const IvanaFF = () => {
 
 	const draw = (p5) => {
 		p5.noStroke();
-		// p5.fill(399);
 		p5.noiseDetail(noiseDetail);
 
 		if (commenceDrawing) {
@@ -313,7 +314,7 @@ const IvanaFF = () => {
 			p5.shuffle(points, true);
 			p5.clear();
 
-			p5.background(0);
+			p5.background(15);
 			r1 = Math.random() * 255;
 			r2 = Math.random() * 255;
 			g1 = Math.random() * 255;

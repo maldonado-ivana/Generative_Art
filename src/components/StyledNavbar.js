@@ -30,10 +30,13 @@ const Navbar = () => {
 					Home
 				</NavLink>
 				<NavLink to="/flowfields" className="p-4">
-					Flow Fields
+					Flow Field
 				</NavLink>
-				<NavLink to="/triangles" className="p-4">
-					Sierpinski Triangles
+				<NavLink to="/triangles" s className="p-4">
+					Sierpinski Triangle
+				</NavLink>
+				<NavLink to="/trees" className="p-4">
+					Fractal Tree
 				</NavLink>
 				{user?.email ? (
 					<>
@@ -79,10 +82,13 @@ const Navbar = () => {
 						<NavLink to="/">Home</NavLink>
 					</li>
 					<li to="/flowfields" className="p-4 border-b border-gray-700">
-						<NavLink to="/flowfields">Flow Fields</NavLink>
+						<NavLink to="/flowfields">Flow Field</NavLink>
 					</li>
 					<li to="/triangles" className="p-4 border-b border-gray-700">
-						<NavLink to="/triangles">Sierpinski Triangles</NavLink>
+						<NavLink to="/triangles">Sierpinski Triangle</NavLink>
+					</li>
+					<li to="/triangles" className="p-4 border-b border-gray-700">
+						<NavLink to="/trees">Fractal Tree</NavLink>
 					</li>
 					<li to="/signup" className="p-4 border-b border-gray-700">
 						<NavLink to="/signup">Signup</NavLink>

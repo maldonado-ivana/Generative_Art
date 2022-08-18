@@ -1,13 +1,15 @@
 // Firebase Imports:
 import { useState, useEffect } from 'react';
 import { db } from '../firebase-config';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+import Modal from '../components/Modal';
 
 const Dashboard = () => {
-	const [selectedImg, setSelectedImg] = useState(null);
 	// Getting data from firebase:
 	const [imgs, setImgs] = useState([]);
 	const usersCollectionRef = collection(db, 'images');
+
+	const [selectedImg, setSelectedImg] = useState(null);
 
 	useEffect(() => {
 		const fetchImages = onSnapshot(
@@ -32,7 +34,9 @@ const Dashboard = () => {
 
 	return (
 		<section className="section">
-			<h2>My Art </h2>
+			<h1 className="pt-20 text-3xl md:text-5xl font-bold text-center text-white">
+				My Art Gallery
+			</h1>
 			<div className="img-grid">
 				{imgs &&
 					imgs.map((doc) => (
@@ -45,6 +49,10 @@ const Dashboard = () => {
 						</div>
 					))}
 			</div>
+
+			{selectedImg && (
+				<Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+			)}
 		</section>
 	);
 };
